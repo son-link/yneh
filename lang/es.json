@@ -1,0 +1,11 @@
+{
+    "lang": {
+        "title": "Tu nombre en jeroglíficos egipcios",
+        "instructions": " Introduce tu nombre abajo. Solo caracteres de la A a la Z, no admite espacios, acentos ni otros caracteres especiales, como la Ñ o los acentos.",
+        "license": "Esta web esta bajo licencia GNU/GPL 3 o superior. Puedes descarga su código, modificarlo, etc, bajo los terminos de dicha licencia.",
+        "man": "Hombre",
+        "woman": "Mujer",
+        "child": "Niño/a",
+        "share": "Compartir"
+    }
+}

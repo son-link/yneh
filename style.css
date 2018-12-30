@@ -1,0 +1,49 @@
+html, body {margin: 0}
+* {font-family: 'Cinzel', serif; color: #212121}
+#content {
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+}
+
+#result img {height: 50px}
+
+#result {height: 60px;}
+
+#name, #are > select{
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid #aaa;
+  margin-bottom: 20px;
+  height: 25px;
+  box-sizing: border-box;
+}
+
+#are {
+  width: 86px;
+  display: inline-block;
+  position: relative;
+}
+#are > select {
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
+  width: 86px;
+  position: relative;
+}
+
+#are:before {
+  font-family: 'fontello';
+  content: '\e800';
+  position: absolute;
+  right: 5px;
+  line-height: 25px;
+}
+
+#share { margin: 1rem;}
+
+a {text-decoration: none; color: #212121; transition: color .5s}
+a:hover {color: #aaa}
+
+footer a[class^=icon-] {font-size: 1.2rem}

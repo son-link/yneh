@@ -1,0 +1,66 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "83ebb03dce0a930910280e4b1e8333b1",
+      "css": "telegram",
+      "code": 59396,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M893 40.3C872.3 40.9 845.5 47.2 813.1 57.8 709.3 91.7 443.2 190.3 398.4 206.2 353.6 222.1 135.6 295.4 90.4 317.3-2 366.8 42.9 442.4 146.2 481.6 454.7 629.7 367.1 554.2 504.8 828.3 533.2 898.3 600 1017.5 664.1 927.4 697.7 876.1 742.8 725 768.6 654.6 801.4 565 921.4 224.2 940.7 134.8 955.7 65.3 938.8 38.9 893 40.3Z",
+        "width": 986
+      },
+      "search": [
+        "telegram_alternative_logo"
+      ]
+    },
+    {
+      "uid": "2d6150442079cbda7df64522dc24f482",
+      "css": "down-dir",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0f6a2573a7b6df911ed199bb63717e27",
+      "css": "github-circled",
+      "code": 61595,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9d3e9faf68fd4e12def853f0d4e1173b",
+      "css": "whatsapp",
+      "code": 62002,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "627abcdb627cb1789e009c08e2678ef9",
+      "css": "twitter",
+      "code": 61593,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "cc399e4597f157dcbf016be0b7407fea",
+      "css": "pinterest",
+      "code": 62001,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "8e04c98c8f5ca0a035776e3001ad2638",
+      "css": "facebook",
+      "code": 61594,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0ddd3e8201ccc7d41f7b7c9d27eca6c1",
+      "css": "link",
+      "code": 59393,
+      "src": "fontawesome"
+    }
+  ]
+}

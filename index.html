@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Your Name on Egyptian Hieroglyphics</title>
+		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="fontello-embedded.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+	<body>
+		<div id="content">
+			<h1 data-translate='title'>Your Name on Egyptian Hieroglyphics</h1>
+			<p data-translate="instructions">
+				Enter your name below. Only characters from A to Z, does not allow spaces, accents or other special characters, such as Ñ or accents.
+			</p>
+			<input type="text" id="name" />
+			<div id="are">
+				<select>
+					<option value="man" data-translate="man">Man</option>
+					<option value="woman" data-translate="women">Women</option>
+					<option value="child" data-translate="child">Child</option>
+				</select>
+			</div>
+			<div id="result"></div>
+			<footer>
+				<div id="share">
+					<span data-translate="share">Share</span>&nbsp;
+					<a href="javascript:window.location=share('fb');" class="icon-facebook"></a>
+					<a href="javascript:window.location=share('tw');" class="icon-twitter"></a>
+					<a href="javascript:window.location=share('ws');" class="icon-whatsapp"></a>
+					<a href="javascript:window.location=share('tg');" class="icon-telegram"></a>
+				</div>
+				<div id="credits">
+					<span data-translate="license">This web code is under the GNU/GPL 3 or newer license. You can download the code, modify, etc, under the license terms.</span>
+					<br /><a href="https://github.com/son-link/yneh" class="icon-github-circled"></a>
+				</div>
+			</footer>
+		</div>
+	</body>
+	<script type="text/javascript" src="app.js"></script>
+</html>
