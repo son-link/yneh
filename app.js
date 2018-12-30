@@ -75,6 +75,7 @@ function show_images(){
 			images += '<img src="images/'+letter+'.svg" />';
 		}
 	}
+	images += '<img src="images/'+are.value+'.svg" />';
 	result.innerHTML = images;
 }
 

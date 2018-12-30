@@ -47,3 +47,7 @@ a {text-decoration: none; color: #212121; transition: color .5s}
 a:hover {color: #aaa}
 
 footer a[class^=icon-] {font-size: 1.2rem}
+
+@media only screen and (max-width: 500px) {
+  #result {height: auto; width: 60px; margin: auto;}
+}
