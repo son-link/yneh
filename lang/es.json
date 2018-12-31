@@ -6,6 +6,8 @@
         "man": "Hombre",
         "woman": "Mujer",
         "child": "Niño/a",
-        "share": "Compartir"
+        "share": "Compartir",
+        "generate": "Generar",
+        "download": "Descargar"
     }
 }

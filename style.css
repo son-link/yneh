@@ -7,11 +7,9 @@ html, body {margin: 0}
   margin: auto;
 }
 
-#result img {height: 50px}
+#result {width: 100%}
 
-#result {height: 60px;}
-
-#name, #are > select{
+#name, #are > select, #gen_img, #download{
   background-color: transparent;
   border-radius: 3px;
   border: 1px solid #aaa;
@@ -40,7 +38,7 @@ html, body {margin: 0}
   right: 5px;
   line-height: 25px;
 }
-
+#download {padding: 0 5px}
 #share { margin: 1rem;}
 
 a {text-decoration: none; color: #212121; transition: color .5s}
@@ -48,6 +46,9 @@ a:hover {color: #aaa}
 
 footer a[class^=icon-] {font-size: 1.2rem}
 
-@media only screen and (max-width: 500px) {
+#canvas {margin: auto}
+#download_img {display: none;}
+
+/*@media only screen and (max-width: 500px) {
   #result {height: auto; width: 60px; margin: auto;}
-}
+}*/

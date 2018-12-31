@@ -10,6 +10,11 @@ var lang = 'en';
 var translations = {};
 if (langs.indexOf(userLang)> -1) lang = userLang;
 
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var canvas_dw = document.getElementById('download_img');
+var context_dw = canvas_dw.getContext('2d');
+
 loadJSON('lang/'+lang+'.json', function(res){
 	if(res){
 		res = JSON.parse(res);
@@ -36,47 +41,65 @@ document.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 
-	input_name.addEventListener('keyup', function(e){
-		code = e.which;
-		if (code != 16 || code != 17){
-			var character = String.fromCharCode(code);
-			if (code == 8 || code == 46 || character.match(/[A-Za-z]/g)){
-				show_images();
-			}else{
-				return false;
-			}
-		}
-	});
-
-	are.addEventListener('change', function(){
+	document.querySelector('#gen_img').addEventListener('click', function(){
 		show_images();
 	});
+
+	document.querySelector('#download').addEventListener('click', function(e){
+		this.href = canvas_dw.toDataURL('image/png');
+	}, false);
 });
 
 function show_images(){
-	result.innerHTML = '';
+	context.canvas.height = 46;
+	context_dw.canvas.height = 72;
 	txt = input_name.value;
 	txt = txt.toLowerCase();
-	images = '';
+	txt = txt.replace(/([^a-z]+)/gi, '-');
+	images = [];
+	posx = 0;
+	posx_dw = 0;
+	loadedimages=0;
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context_dw.clearRect(0, 0, canvas_dw.width, canvas_dw.height);
+
 	for(i=0; i<txt.length; i++){
 		n = i+1;
 		letter = txt[i];
+		imgObj = new Image();
 		if(n <= txt.length){
 			if(letter == 'k' && txt[n] == 'h'){
-				images += '<img src="images/kh.svg" />';
+				img = 'images/kh.svg';
 				i++;
 			}else if(letter == 's' && txt[n] == 'h'){
-				images += '<img src="images/sh.svg" />';
+				img = 'images/sh.svg';
 				i++;
 			}else{
-				images += '<img src="images/'+letter+'.svg" />';
+				img = 'images/'+letter+'.svg';
 			}
 		}else{
-			images += '<img src="images/'+letter+'.svg" />';
+			img = 'images/'+letter+'.svg';
+		}
+		imgObj.src = img;
+		images.push(imgObj);
+		imgObj.onload = function(){ draw() }
+	}
+
+	function draw(){
+		loadedimages++;
+		if (loadedimages === images.length){
+			context.canvas.width = 46*images.length;
+			context_dw.canvas.width = 72*images.length;
+			images.forEach(function(img){
+				context.drawImage(img, posx, 0, 46, 46);
+				posx += 46;
+				context_dw.drawImage(img, posx_dw, 0, 72, 72);
+				posx_dw += 72;
+			});
 		}
 	}
-	images += '<img src="images/'+are.value+'.svg" />';
-	result.innerHTML = images;
+	
+	location.hash = are.value+'-'+txt;
 }
 
 function __(string){

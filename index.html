@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>Your Name on Egyptian Hieroglyphics</title>
+		<title data-translate='title'>Your Name on Egyptian Hieroglyphics</title>
 		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet"> 
 		<link rel="stylesheet" type="text/css" href="fontello-embedded.css" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
@@ -22,7 +22,12 @@
 					<option value="child" data-translate="child">Child</option>
 				</select>
 			</div>
-			<div id="result"></div>
+			<button id="gen_img" data-translate='generate'>Generate</button>
+			<div id="result">
+				<canvas id="canvas"></canvas>
+				<canvas id="download_img"></canvas>
+			</div>
+			<a id="download" download="yneh.png" data-translate="download">Download</a>
 			<footer>
 				<div id="share">
 					<span data-translate="share">Share</span>&nbsp;
