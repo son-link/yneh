@@ -45,12 +45,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "cc399e4597f157dcbf016be0b7407fea",
-      "css": "pinterest",
-      "code": 62001,
-      "src": "fontawesome"
-    },
-    {
       "uid": "8e04c98c8f5ca0a035776e3001ad2638",
       "css": "facebook",
       "code": 61594,
@@ -61,6 +55,12 @@
       "css": "link",
       "code": 59393,
       "src": "fontawesome"
+    },
+    {
+      "uid": "c9bef3dc67fea47e94c4a5030ea64dad",
+      "css": "clipboard",
+      "code": 59394,
+      "src": "elusive"
     }
   ]
 }

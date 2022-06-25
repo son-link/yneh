@@ -15,14 +15,21 @@ var context = canvas.getContext('2d');
 var canvas_dw = document.getElementById('download_img');
 var context_dw = canvas_dw.getContext('2d');
 
-loadJSON('lang/'+lang+'.json', function(res){
-	if(res){
+/**
+ * Loads the JSON containing the translations in the browser language
+ * if it is not English, or if the translation is not available.
+ */
+loadJSON('lang/'+lang+'.json', function(res) {
+	if (res) {
 		res = JSON.parse(res);
 		translations = res.lang;
+
 		document.querySelectorAll('*[data-translate]').forEach(function(e){
 			string = e.getAttribute('data-translate');
 			e.innerHTML = __(string);
 		});
+		
+		document.querySelector('.icon-clipboard').setAttribute('title', __('clipboard'));
 	}
 	else return false;
 });
@@ -50,41 +57,56 @@ document.addEventListener("DOMContentLoaded", function(){
 	}, false);
 });
 
-function show_images(){
+/**
+ * Show the Hieroglyphics
+ */
+function show_images() {
 	context.canvas.height = 46;
 	context_dw.canvas.height = 72;
-	txt = input_name.value;
+	let txt = input_name.value;
 	txt = txt.toLowerCase();
 	txt = txt.replace(/([^a-z]+)/gi, '-');
-	images = [];
-	posx = 0;
-	posx_dw = 0;
-	loadedimages=0;
+	let images = [];
+	let posx = 0;
+	let posx_dw = 0;
+	let loadedimages = 0;
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context_dw.clearRect(0, 0, canvas_dw.width, canvas_dw.height);
 
-	for(i=0; i<txt.length; i++){
+	for (i = 0; i < txt.length; i++) {
 		n = i+1;
 		letter = txt[i];
 		imgObj = new Image();
-		if(n <= txt.length){
-			if(letter == 'k' && txt[n] == 'h'){
+		if (n <= txt.length) {
+			if(letter == 'k' && txt[n] == 'h') {
 				img = 'images/kh.svg';
 				i++;
-			}else if(letter == 's' && txt[n] == 'h'){
+			} else if(letter == 's' && txt[n] == 'h') {
 				img = 'images/sh.svg';
 				i++;
-			}else{
+			} else {
 				img = 'images/'+letter+'.svg';
 			}
-		}else{
+		} else {
 			img = 'images/'+letter+'.svg';
 		}
+
 		imgObj.src = img;
 		images.push(imgObj);
 		imgObj.onload = function(){ draw() }
 	}
 
+	if (are.value != 'none') {
+		let imgObj = new Image();
+		img = 'images/'+ are.value + '.svg';
+		imgObj.src = img;
+		images.push(imgObj);
+		imgObj.onload = () => draw();
+	}
+
+	/**
+	 * Draw the hieroglyphics
+	 */
 	function draw(){
 		loadedimages++;
 		if (loadedimages === images.length){
@@ -99,11 +121,15 @@ function show_images(){
 		}
 	}
 	
-	location.hash = are.value+'-'+txt;
+	location.hash = are.value + '-' + txt;
 }
 
+/**
+ * Return the translation
+ * @param {String} string 
+ * @returns String
+ */
 function __(string){
-	// This function is used for translate the string passed
 	return translations[string];
 }
 
@@ -116,10 +142,11 @@ function loadJSON(url, callback) {
             callback(xobj.responseText);
         }
     };
+
     xobj.send(null);  
 }
 
-function share(id){
+function share(id) {
 	share_urls = {
 		fb: 'https://www.facebook.com/sharer.php?u='+encodeURIComponent(location.href),
 		tw: 'http://twitter.com/intent/tweet?text='+__('title')+'&url='+encodeURIComponent(location.href),
@@ -127,4 +154,9 @@ function share(id){
 		ws: 'whatsapp://send?text='+encodeURIComponent(location.href)
 	}
 	return share_urls[id];
+}
+
+function toClipboard() {
+	navigator.clipboard.writeText(location.href);
+	alert(__('URL copied to clipboard'));
 }

@@ -12,11 +12,12 @@
 		<div id="content">
 			<h1 data-translate='title'>Your Name on Egyptian Hieroglyphics</h1>
 			<p data-translate="instructions">
-				Enter your name below. Only characters from A to Z, does not allow spaces, accents or other special characters, such as Ñ or accents.
+				Enter your name below. Only characters from A to Z, does not allow spaces, accents or other special characters, such as Ñ or Ç.
 			</p>
 			<input type="text" id="name" />
 			<div id="are">
 				<select>
+					<option value="none"></option>
 					<option value="man" data-translate="man">Man</option>
 					<option value="woman" data-translate="woman">Woman</option>
 					<option value="child" data-translate="child">Child</option>
@@ -31,17 +32,19 @@
 			<footer>
 				<div id="share">
 					<span data-translate="share">Share</span>&nbsp;
-					<a href="javascript:window.location=share('fb');" class="icon-facebook"></a>
-					<a href="javascript:window.location=share('tw');" class="icon-twitter"></a>
-					<a href="javascript:window.location=share('ws');" class="icon-whatsapp"></a>
-					<a href="javascript:window.location=share('tg');" class="icon-telegram"></a>
+					<a href="javascript:window.location=share('fb');" class="icon-facebook" title="Facebook"></a>
+					<a href="javascript:window.location=share('tw');" class="icon-twitter" title="Twitter"></a>
+					<a href="javascript:window.location=share('ws');" class="icon-whatsapp" title="WhatsApp"></a>
+					<a href="javascript:window.location=share('tg');" class="icon-telegram" title="Telegram"></a>
+					<a href="javascript:toClipboard();" class="icon-clipboard" title="Clipboard"></a>
 				</div>
 				<div id="credits">
 					<span data-translate="license">This web code is under the GNU/GPL 3 or newer license. You can download the code, modify, etc, under the license terms.</span>
-					<br /><a href="https://github.com/son-link/yneh" class="icon-github-circled"></a>
+					<br /><a href="https://github.com/son-link/yneh" class="icon-github-circled" title="GitHub"></a>
 				</div>
 			</footer>
 		</div>
 	</body>
 	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="pequejs.min.js"></script>
 </html>

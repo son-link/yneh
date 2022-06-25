@@ -1,5 +1,13 @@
-html, body {margin: 0}
-* {font-family: 'Cinzel', serif; color: #212121}
+html,
+body {
+  margin: 0;
+}
+
+* {
+  font-family: 'Cinzel', serif;
+  color: #212121;
+}
+
 #content {
   text-align: center;
   width: 90%;
@@ -7,9 +15,14 @@ html, body {margin: 0}
   margin: auto;
 }
 
-#result {width: 100%}
+#result {
+  width: 100%;
+}
 
-#name, #are > select, #gen_img, #download{
+#name,
+#are > select,
+#gen_img,
+#download {
   background-color: transparent;
   border-radius: 3px;
   border: 1px solid #aaa;
@@ -23,6 +36,7 @@ html, body {margin: 0}
   display: inline-block;
   position: relative;
 }
+
 #are > select {
   -webkit-appearance: none; 
   -moz-appearance: none;
@@ -38,16 +52,41 @@ html, body {margin: 0}
   right: 5px;
   line-height: 25px;
 }
-#download {padding: 0 5px}
-#share { margin: 1rem;}
 
-a {text-decoration: none; color: #212121; transition: color .5s}
-a:hover {color: #aaa}
+#download {
+  padding: 0 5px;
+}
 
-footer a[class^=icon-] {font-size: 1.2rem}
+#download,
+button {
+  cursor: pointer;
+}
 
-#canvas {margin: auto}
-#download_img {display: none;}
+#share {
+  margin: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #212121;
+  transition: color .5s;
+}
+
+a:hover {
+  color: #aaa;
+}
+
+footer a[class^=icon-] {
+  font-size: 1.2rem;
+}
+
+#canvas {
+  margin: auto;
+}
+
+#download_img {
+  display: none;
+}
 
 /*@media only screen and (max-width: 500px) {
   #result {height: auto; width: 60px; margin: auto;}
