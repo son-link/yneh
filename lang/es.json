@@ -10,6 +10,7 @@
         "generate": "Generar",
         "download": "Descargar",
         "URL copied to clipboard": "URL copiada al portapapeles",
-        "clipboard": "Portapapeles"
+        "clipboard": "Portapapeles",
+        "Enter your Mastodon domain": "Introduce el dominio de tu cuenta de Mastodon"
     }
 }

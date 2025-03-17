@@ -1,31 +1,29 @@
-var name;
 let input_name
 let result;
 let are;
-var hash = location.hash.substr(1);
-var userLang = navigator.language || navigator.userLanguage;
-var userLang = userLang.split('-')[0];
-var langs = ['en', 'es'];
-var lang = 'en';
-var translations = {};
+let hash = location.hash.substr(1);
+let userLang = navigator.language || navigator.userLanguage;
+userLang = userLang.split('-')[0];
+let langs = ['en', 'es'];
+let lang = 'en';
+let translations = {};
 if (langs.indexOf(userLang)> -1) lang = userLang;
 
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-var canvas_dw = document.getElementById('download_img');
-var context_dw = canvas_dw.getContext('2d');
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+const canvas_dw = document.getElementById('download_img');
+const context_dw = canvas_dw.getContext('2d');
 
 /**
  * Loads the JSON containing the translations in the browser language
  * if it is not English, or if the translation is not available.
  */
-loadJSON('lang/'+lang+'.json', function(res) {
-	if (res) {
-		res = JSON.parse(res);
+loadJSON(`lang/${lang}.json`, function(res) {
+	if (!!res) {
 		translations = res.lang;
 
-		document.querySelectorAll('*[data-translate]').forEach(function(e){
-			string = e.getAttribute('data-translate');
+		document.querySelectorAll('*[data-translate]').forEach(function(e) {
+			const string = e.getAttribute('data-translate');
 			e.innerHTML = __(string);
 		});
 		
@@ -34,15 +32,15 @@ loadJSON('lang/'+lang+'.json', function(res) {
 	else return false;
 });
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 	input_name = document.querySelector('#name');
 	result = document.querySelector('#result');
 	are = document.querySelector('#are > select');
 
-	if (hash.length > 0){
+	if (hash.length > 0) {
 		if (hash.match(/^man|woman|child\-[A-Za-z]/ig)){
 			hash = hash.split('-');
-			document.querySelector('#are option[value='+hash[0]+']').setAttribute('selected', 'selected');
+			document.querySelector(`#are option[value=${hash[0]}]`).setAttribute('selected', 'selected');
 			input_name.value = hash[1];
 			show_images();
 		}
@@ -73,10 +71,11 @@ function show_images() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context_dw.clearRect(0, 0, canvas_dw.width, canvas_dw.height);
 
-	for (i = 0; i < txt.length; i++) {
+	for (let i = 0; i < txt.length; i++) {
 		n = i+1;
 		letter = txt[i];
 		imgObj = new Image();
+
 		if (n <= txt.length) {
 			if(letter == 'k' && txt[n] == 'h') {
 				img = 'images/kh.svg';
@@ -107,12 +106,14 @@ function show_images() {
 	/**
 	 * Draw the hieroglyphics
 	 */
-	function draw(){
+	function draw() {
 		loadedimages++;
-		if (loadedimages === images.length){
-			context.canvas.width = 46*images.length;
-			context_dw.canvas.width = 72*images.length;
-			images.forEach(function(img){
+
+		if (loadedimages === images.length) {
+			context.canvas.width = 46 * images.length;
+			context_dw.canvas.width = 72 * images.length;
+
+			images.forEach(function(img) {
 				context.drawImage(img, posx, 0, 46, 46);
 				posx += 46;
 				context_dw.drawImage(img, posx_dw, 0, 72, 72);
@@ -121,7 +122,7 @@ function show_images() {
 		}
 	}
 	
-	location.hash = are.value + '-' + txt;
+	location.hash = `${are.value}-${txt}`;
 }
 
 /**
@@ -129,21 +130,13 @@ function show_images() {
  * @param {String} string 
  * @returns String
  */
-function __(string){
-	return translations[string];
-}
+const __ = string => translations[string];
 
-function loadJSON(url, callback) {   
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    	xobj.open('GET', url, true);
-    	xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
-        }
-    };
-
-    xobj.send(null);  
+async function loadJSON(url, callback) {
+	const resp = await fetch(url)
+	if (resp.status != 200) return
+	const data = await resp.json()
+	if (!!data && typeof callback === 'function') callback(data);
 }
 
 function share(id) {
@@ -154,6 +147,12 @@ function share(id) {
 		ws: 'whatsapp://send?text='+encodeURIComponent(location.href)
 	}
 	return share_urls[id];
+}
+
+function mastodonShare() {
+    const url = encodeURIComponent(location.href);
+    const instance = prompt(__('Enter your Mastodon domain'), 'mastodon.social');
+	if (!!instance) window.open(`https://${instance}/share?text=${__('title')}+${input_name.value}+${url}`, '_blank');
 }
 
 function toClipboard() {
